@@ -28,9 +28,9 @@ function get_simple_rand($hash, $min, $max) {
         $character = substr($hash, $i, 1);
 
         if (ctype_alpha($character)) {
-            sum += array_search($character, $array_alphabet) + 10;
+            $sum += array_search($character, $array_alphabet) + 10;
         } else {
-            sum += (int)$character;
+            $sum += (int)$character;
         }
     }
 
