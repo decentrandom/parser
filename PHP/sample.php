@@ -17,9 +17,9 @@ $_range_max = $_GET["range_max"];
 
 <body>
 <form method="get" action="./sample.php">
-    <div>검증인이 제시한 해시 : <input type="text" name="rand_hash" size="64"></div>
-    <div>난수 범위(최소) : <input type="text" name="range_min" size="5"></div>
-    <div>난수 범위(최대) : <input type="text" name="range_max" size="5"></div>
+    <div>검증인이 제시한 해시 : <input type="text" name="rand_hash" size="64" value="<?=$_rand_hash;?>"></div>
+    <div>난수 범위(최소) : <input type="text" name="range_min" size="5" value="<?=$_range_min;?>"></div>
+    <div>난수 범위(최대) : <input type="text" name="range_max" size="5" value="<?=$_range_max;?>"></div>
     <div><button type="submit">난수 구하기</button></div>
 </form>
 <?
