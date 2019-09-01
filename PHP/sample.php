@@ -6,6 +6,7 @@ include "./lib_decentrand.php";
 $_rand_hash = $_GET["rand_hash"];
 $_range_min = $_GET["range_min"];
 $_range_max = $_GET["range_max"];
+$_rand_nonce = $_GET["rand_nonce"];
 
 ?><!DOCTYPE html>
 <html>
@@ -20,13 +21,14 @@ $_range_max = $_GET["range_max"];
     <div>검증인이 제시한 해시 : <input type="text" name="rand_hash" size="64" value="<?=$_rand_hash;?>"></div>
     <div>난수 범위(최소) : <input type="text" name="range_min" size="5" value="<?=$_range_min;?>"></div>
     <div>난수 범위(최대) : <input type="text" name="range_max" size="5" value="<?=$_range_max;?>"></div>
+    <div>논스(문자열) : <input type="text" name="rand_nonce" size="64" value="<?=$_rand_nonce;?>"></div>
     <div><button type="submit">난수 구하기</button></div>
 </form>
 <?
 
-if (trim($_rand_hash) != "" && $_range_min >= 0 && $_range_max > $_range_min) {
+if (trim($_rand_hash) != "" && $_range_min >= 0 && $_range_max > $_range_min && trim($_rand_nonce) != "") {
 
-    $result = get_simple_rand($_rand_hash, $_range_min, $_range_max);
+    $result = get_simple_rand($_rand_hash, $_range_min, $_range_max, $_rand_nonce);
     echo "<div>선택된 난수 : <b>".$result."</b></div>";
 }
 
