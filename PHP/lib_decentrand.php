@@ -1,16 +1,14 @@
 <?
 
-function get_simple_rand($nonce, $min, $max, $seed) {
+function get_simple_rand($seed, $min, $max, $nonce) {
 
     $nonce = trim($nonce);
     $nonce = preg_replace("/\W|_/", "", $nonce);
-    $nonce = strtoupper($nonce);
     
     $seed = trim($seed);
     $seed = preg_replace("/\W|_/", "", $seed);
-    $seed = strtoupper($seed);
     
-    $hash = $nonce.$seed;
+    $hash = strtoupper(md5($seed.$nonce));
 
     $length = strlen($hash);
 
@@ -44,15 +42,13 @@ function get_simple_rand($nonce, $min, $max, $seed) {
 }
 
 
-function make_simple_pick($nonce, $target, $seed) {
+function make_simple_pick($seed, $target, $nonce) {
 	
 	$nonce = trim($nonce);
     $nonce = preg_replace("/\W|_/", "", $nonce);
-    $nonce = strtoupper($nonce);
     
 	$seed = trim(md5($seed));
     $seed = preg_replace("/\W|_/", "", $seed);
-    $seed = strtoupper($seed);
     
     $target = trim($target);
     $array_target = explode(",", $target);
@@ -64,7 +60,7 @@ function make_simple_pick($nonce, $target, $seed) {
     
     for ($i = 0; $i < $number_of_tartets; $i++) {
 	    
-	    $hash = strtoupper(md5($nonce.$array_target[$i].$seed));
+	    $hash = strtoupper(md5($seed.$array_target[$i].$nonce));
 	    $length = strlen($hash);
 	    $sum = 0;
 	    
