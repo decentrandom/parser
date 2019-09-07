@@ -8,7 +8,7 @@ function get_simple_rand($seed, $min, $max, $nonce) {
     $seed = trim($seed);
     $seed = preg_replace("/\W|_/", "", $seed);
     
-    $hash = strtoupper(md5($seed.$nonce));
+    $hash = strtoupper(hash("sha256", $seed.$nonce));
 
     $length = strlen($hash);
 
@@ -47,7 +47,7 @@ function make_simple_pick($seed, $target, $nonce) {
 	$nonce = trim($nonce);
     $nonce = preg_replace("/\W|_/", "", $nonce);
     
-	$seed = trim(md5($seed));
+	$seed = trim(hash("sha256", $seed));
     $seed = preg_replace("/\W|_/", "", $seed);
     
     $target = trim($target);
@@ -60,7 +60,7 @@ function make_simple_pick($seed, $target, $nonce) {
     
     for ($i = 0; $i < $number_of_tartets; $i++) {
 	    
-	    $hash = strtoupper(md5($seed.$array_target[$i].$nonce));
+	    $hash = strtoupper(hash("sha256", $seed.$array_target[$i].$nonce));
 	    $length = strlen($hash);
 	    $sum = 0;
 	    
