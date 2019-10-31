@@ -1,4 +1,4 @@
-# DecentRandom Parser
+# DecentRandom Parser Alpha
 
 DecentRandom으로 생성한 난수를 분석하는데 사용하는 도구입니다. DecentRandom의 파서는 다음의 특징을 지닙니다.
 
